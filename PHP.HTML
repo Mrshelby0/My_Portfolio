@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="pic.jpg" class="text-xl font-bold text-blue-700">Mr.Shelby</a>
+            <ul class="flex space-x-4 px-10">
+                <li><a href="home.html" class="text-black font-bold hover:text-gray-800">Home</a></li>
+                <li><a href="work.html" class="text-blue-500 font-bold hover:text-gray-800">Works</a></li>
+                <li><a href="blog.html" class="text-black font-bold hover:text-gray-800">Blog</a></li>
+                <li><a href="about.html" class="text-black font-bold hover:text-gray-800">About-Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-6 mt-6 bg-white rounded-lg shadow-md">
+        <article>
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Introduction</h2>
+                <p>In this blog post, we will dissect a simple PHP script that handles user signup by processing form data, inserting it into a database, and redirecting the user upon successful signup. This example will help you understand the basics of handling form submissions in PHP.</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">The PHP Code</h2>
+                <pre class="bg-gray-200 p-4 rounded overflow-x-auto"><code>&lt;?php
+session_start();
+
+// Include the database connection file
+include 'db_connect.php';
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Insert user data into database
+    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION["username"] = $username; // Store username in session for future use
+        header("Location: index.php"); // Redirect to dashboard or some other page on successful signup
+        exit();
+    } else {
+        echo "Error: " . $sql . "&lt;br>" . $conn->error;
+    }
+}
+?></code></pre>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Detailed Explanation</h2>
+
+                <h3 class="text-xl font-semibold mt-4">1. Session Initialization</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>session_start();</code></pre>
+                <p>The <code>session_start()</code> function initializes a new session or resumes an existing session. This is necessary for storing session variables such as the username.</p>
+
+                <h3 class="text-xl font-semibold mt-4">2. Database Connection</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>include 'db_connect.php';</code></pre>
+                <p>The <code>include 'db_connect.php';</code> statement includes the database connection file. This file should contain the necessary code to establish a connection to the database, typically using the <code>$conn</code> variable.</p>
+
+                <h3 class="text-xl font-semibold mt-4">3. Form Submission Check</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>if ($_SERVER["REQUEST_METHOD"] == "POST") {</code></pre>
+                <p>This checks if the form has been submitted using the POST method. If the condition is true, it means the form was submitted, and the code inside the block will be executed.</p>
+
+                <h3 class="text-xl font-semibold mt-4">4. Get Form Data</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>$username = $_POST["username"];
+$email = $_POST["email"];
+$password = $_POST["password"];</code></pre>
+                <p>These lines retrieve the form data (username, email, and password) from the POST request and store them in respective variables.</p>
+
+                <h3 class="text-xl font-semibold mt-4">5. Insert User Data into Database</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>$sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+if ($conn->query($sql) === TRUE) {</code></pre>
+                <p>The <code>$sql</code> variable contains an SQL query to insert the user data into the <code>users</code> table. The <code>if ($conn->query($sql) === TRUE)</code> checks if the query was executed successfully.</p>
+
+                <h3 class="text-xl font-semibold mt-4">6. Store Username in Session</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>$_SESSION["username"] = $username;</code></pre>
+                <p>If the query is successful, the username is stored in the session. This can be used to keep the user logged in or to personalize the user experience on future pages.</p>
+
+                <h3 class="text-xl font-semibold mt-4">7. Redirect to Another Page</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>header("Location: index.php");
+exit();</code></pre>
+                <p>The <code>header("Location: index.php");</code> function redirects the user to another page (in this case, <code>index.php</code>) upon successful signup. The <code>exit();</code> function ensures that no further code is executed after the redirection.</p>
+
+                <h3 class="text-xl font-semibold mt-4">8. Error Handling</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>} else {
+    echo "Error: " . $sql . "&lt;br>" . $conn->error;
+}</code></pre>
+                <p>If the query fails, this block of code will execute, printing an error message that includes the SQL query and the error returned by the database connection.</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">How the Program Works</h2>
+                <ol class="list-decimal list-inside">
+                    <li>The program starts a session.</li>
+                    <li>Includes the database connection file.</li>
+                    <li>Checks if the form is submitted via POST.</li>
+                    <li>Retrieves the form data (username, email, password).</li>
+                    <li>Constructs an SQL query to insert the user data into the database.</li>
+                    <li>Executes the query and checks for success.</li>
+                    <li>On success, stores the username in the session and redirects the user to another page.</li>
+                    <li>On failure, prints an error message.</li>
+                </ol>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Security Note</h2>
+                <p>This code is vulnerable to SQL injection attacks as it directly inserts user input into the SQL query without proper sanitization. To improve security, consider using prepared statements and parameterized queries. For example:</p>
+                <pre class="bg-gray-200 p-4 rounded overflow-x-auto"><code>$stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $username, $email, $password);
+$stmt->execute();</code></pre>
+                <p>Additionally, it is advisable to hash the passwords before storing them in the database using functions like <code>password_hash()</code>.</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Conclusion</h2>
+                <p>This PHP script provides a straightforward example of how to handle user signup forms, store user data in a database, and manage sessions. By understanding each component, you can extend and improve the script to suit your specific needs.</p>
+            </section>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook" class="inline w-6 h-6"></a>
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" class="inline w-6 h-6"></a>
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter" class="inline w-6 h-6"></a>
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn" class="inline w-6 h-6"></a>
+            </div>
+            <p>&copy; 2024, All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

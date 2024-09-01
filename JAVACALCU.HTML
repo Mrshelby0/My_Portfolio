@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="pic.jpg" class="text-xl font-bold text-blue-700">Mr.Shelby</a>
+            <ul class="flex space-x-4 px-10">
+                <li><a href="home.html" class="text-black font-bold hover:text-gray-800">Home</a></li>
+                <li><a href="work.html" class="text-blue-500 font-bold hover:text-gray-800">Works</a></li>
+                <li><a href="blog.html" class="text-black font-bold hover:text-gray-800">Blog</a></li>
+                <li><a href="about.html" class="text-black font-bold hover:text-gray-800">About-Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-6 mt-6 bg-white rounded-lg shadow-md">
+        <article>
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Introduction</h2>
+                <p>In this blog post, we'll create a simple calculator in Java that can perform basic operations such as addition, subtraction, multiplication, and division. Each operation will be encapsulated in its own method, making the code modular and easy to understand.</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Code Overview</h2>
+                <p>This Java program defines a simple calculator that can perform four basic operations: addition, subtraction, multiplication, and division. Each operation is implemented as a separate method. The user is prompted to choose an operation, and the corresponding method is called to perform the calculation.</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Detailed Explanation</h2>
+
+                <h3 class="text-xl font-semibold mt-4">1. Import Statements</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>import java.util.*;</code></pre>
+                <p>The <code>import java.util.*</code> statement imports the Java Utility package, which includes the Scanner class used for taking user input.</p>
+
+                <h3 class="text-xl font-semibold mt-4">2. Class Definition</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>public class calculatorwithfunction {</code></pre>
+                <p>The class <code>calculatorwithfunction</code> is defined as public, meaning it can be accessed from outside its package.</p>
+
+                <h3 class="text-xl font-semibold mt-4">3. Sum Method</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>public static int sum(){
+    Scanner s = new Scanner(System.in);
+    System.out.println("Enter the value of a : ");
+    int a = s.nextInt();
+    System.out.println("Enter the value of B : ");
+    int b = s.nextInt();
+    int c = a + b;
+    return c;
+}</code></pre>
+                <p>This method prompts the user to enter two integers <code>a</code> and <code>b</code>. It calculates their sum and returns the result.</p>
+
+                <h3 class="text-xl font-semibold mt-4">4. Subtraction Method</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>public static int sub(){
+    Scanner s = new Scanner(System.in);
+    System.out.println("Enter the value of a : ");
+    int a = s.nextInt();
+    System.out.println("Enter the value of B : ");
+    int b = s.nextInt();
+    int c = a - b;
+    return c;
+}</code></pre>
+                <p>Similar to the sum method, this method prompts the user for two integers and returns their difference.</p>
+
+                <h3 class="text-xl font-semibold mt-4">5. Multiplication Method</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>public static int MULTIPLICATION(){
+    Scanner s = new Scanner(System.in);
+    System.out.println("Enter the value of a : ");
+    int a = s.nextInt();
+    System.out.println("Enter the value of B : ");
+    int b = s.nextInt();
+    int c = a * b;
+    return c;
+}</code></pre>
+                <p>This method prompts the user for two integers and returns their product.</p>
+
+                <h3 class="text-xl font-semibold mt-4">6. Division Method</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>public static int DIVISION(){
+    Scanner s = new Scanner(System.in);
+    System.out.println("Enter the value of divident : ");
+    int a = s.nextInt();
+    System.out.println("Enter the value of devisor : ");
+    int b = s.nextInt();
+    int c = a / b;
+    return c;
+}</code></pre>
+                <p>This method prompts the user for two integers and returns their quotient.</p>
+
+                <h3 class="text-xl font-semibold mt-4">7. Main Method</h3>
+                <pre class="bg-gray-200 p-4 rounded"><code>public static void main(String[] args) {
+    System.out.println("Which operation do you want to do : ");
+    System.out.println("1) SUM");
+    System.out.println("2) SUBTRACTION");
+    System.out.println("3) MULTIPLICATION");
+    System.out.println("4) DIVISION");
+    System.out.println("5) END");
+    System.out.println(" >>>>>");
+
+    Scanner s = new Scanner(System.in);
+    int ans = s.nextInt();
+    
+    if (ans == 1) {
+        System.out.println("The sum of A + B is : " + sum());
+    }
+
+    if (ans == 2) {
+        System.out.println("The subtraction of A - B is :" + sub());
+    }
+    
+    if (ans == 3) {
+        System.out.println("The Multiplication of A AND B IS :" + MULTIPLICATION());
+    }
+
+    if (ans == 4) {
+        System.out.println("The Division of A and B is : " + DIVISION());            
+    }
+
+    if (ans == 5) {
+        System.out.println("Thank you for choosing this program...");
+    }
+}</code></pre>
+                <p>The <code>main</code> method starts by displaying a menu of operations that the user can choose from. It then reads the user's choice using the <code>Scanner</code> class. Based on the user's choice, it calls the corresponding method (sum, sub, MULTIPLICATION, or DIVISION) and displays the result. If the user chooses option 5, the program prints a thank-you message and ends.</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">How the Program Works</h2>
+                <ol class="list-decimal list-inside">
+                    <li>The program displays a menu of operations.</li>
+                    <li>The user selects an operation by entering a number (1 to 5).</li>
+                    <li>The program prompts the user to enter two integers.</li>
+                    <li>The selected operation is performed, and the result is displayed.</li>
+                    <li>If the user selects 5, the program prints a thank-you message and terminates.</li>
+                </ol>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-2xl font-semibold mb-2">Conclusion</h2>
+                <p>This simple calculator program demonstrates basic user input handling and function usage in Java. Each operation is encapsulated in its own method, making the code modular and easy to understand. This is a great starting point for anyone looking to learn Java programming and understand how to work with user inputs and functions.</p>
+            </section>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook" class="inline w-6 h-6"></a>
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" class="inline w-6 h-6"></a>
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter" class="inline w-6 h-6"></a>
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn" class="inline w-6 h-6"></a>
+            </div>
+            <p>&copy; 2024, All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
