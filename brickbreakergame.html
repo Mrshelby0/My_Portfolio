@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="pic.jpg" class="text-xl font-bold text-blue-700">Mr.Shelby</a>
+            <ul class="flex space-x-4 px-10">
+                <li><a href="home.html" class="text-black font-bold hover:text-gray-800">Home</a></li>
+                <li><a href="work.html" class="text-blue-500 font-bold hover:text-gray-800">Works</a></li>
+                <li><a href="blog.html" class="text-black font-bold hover:text-gray-800">Blog</a></li>
+                <li><a href="about.html" class="text-black font-bold hover:text-gray-800">About-Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+            <!-- Main Content -->
+    <main class="container mx-auto py-16 px-4">
+        <article class="bg-white p-8 shadow-lg rounded-lg">
+            <header>
+                <h1 class="text-3xl font-bold text-blue-500 mb-4">Brick Breaker Game: Code Explanation</h1>
+                <p class="text-gray-600">A step-by-step breakdown of a simple Brick Breaker game built using Java Swing and AWT libraries in Java.</p>
+            </header>
+
+            <section class="mt-8">
+                <h2 class="text-2xl font-bold text-blue-500 mb-4">Overview</h2>
+                <p>This Brick Breaker game is a simple implementation of the classic arcade game, where the player controls a paddle at the bottom of the screen, bouncing a ball to break bricks at the top. The game is implemented in Java using the Swing and AWT libraries, which provide the necessary tools for creating the graphical user interface (GUI).</p>
+
+                <h2 class="text-2xl font-bold text-blue-500 mb-4">Key Components</h2>
+
+                <h3 class="text-xl font-bold text-blue-500 mt-8 mb-2">1. Game Initialization</h3>
+                <p>The game is initialized in the <code>BrickBreaker</code> constructor. Here, we define a 2D array <code>map</code> representing the bricks. Each brick is assigned a value of <code>1</code>, indicating that it hasn't been hit. The size of each brick is calculated based on the total width and height available.</p>
+                <pre class="bg-gray-100 p-4 rounded-lg overflow-auto">
+<code>
+"private int[][] map;"
+private int brickWidth;
+private int brickHeight;
+
+public BrickBreaker() {
+    map = new int[3][7];
+    "for (int i = 0; i < map.length; i++) {"
+        "for (int j = 0; j< map[0].length; j++) {"
+"            map[i][j] = 1;""
+        }
+    }
+    brickWidth = 540 / 7;
+    brickHeight = 150 / 3;
+}"
+</code>
+                </pre>
+
+                <h3 class="text-xl font-bold text-blue-500 mt-8 mb-2">2. Drawing the Game</h3>
+                <p>The <code>paint</code> method is responsible for rendering all game components. It uses the <code>Graphics2D</code> class to draw the background, bricks, borders, paddle, ball, and the score. If the ball falls below the paddle (indicating game over), it displays a game-over message.</p>
+                <pre class="bg-gray-100 p-4 rounded-lg overflow-auto">
+<code>
+public void paint(Graphics g) {
+    Graphics2D g2d = (Graphics2D) g;
+
+    // Background
+    g2d.setColor(Color.black);
+    g2d.fillRect(1, 1, 692, 592);
+
+    // Drawing map
+    for (int i = 0; i < map.length; i++) {
+        for (int j = 0; j < map[0].length; j++) {
+            if (map[i][j] > 0) {
+                g2d.setColor(Color.white);
+                g2d.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+
+                g2d.setStroke(new BasicStroke(3));
+                g2d.setColor(Color.black);
+                g2d.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+            }
+        }
+    }
+
+    // Other game components...
+}
+</code>
+                </pre>
+
+                <h3 class="text-xl font-bold text-blue-500 mt-8 mb-2">3. Handling User Input</h3>
+                <p>User input is handled by implementing the <code>KeyListener</code> interface. The <code>keyPressed</code> method listens for arrow keys to move the paddle left or right. The <code>VK_ENTER</code> key allows the user to restart the game after a game-over.</p>
+                <pre class="bg-gray-100 p-4 rounded-lg overflow-auto">
+<code>
+@Override
+public void keyPressed(KeyEvent e) {
+    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        if (playerX >= 600) {
+            playerX = 600;
+        } else {
+            moveRight();
+        }
+    }
+    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if (playerX < 10) {
+            playerX = 10;
+        } else {
+            moveLeft();
+        }
+    }
+    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (!play) {
+            play = true;
+            // Reset game variables
+            ballPosX = 120;
+            ballPosY = 350;
+            ballDirX = -1;
+            ballDirY = -2;
+            playerX = 310;
+            score = 0;
+            totalBricks = 21;
+
+            // Reset map
+            for (int i = 0; i < map.length; i++) {
+                for (int j = 0; j < map[0].length; j++) {
+                    map[i][j] = 1;
+                }
+            }
+            repaint();
+        }
+    }
+}
+</code>
+                </pre>
+
+                <h3 class="text-xl font-bold text-blue-500 mt-8 mb-2">4. Game Mechanics</h3>
+                <p>The <code>actionPerformed</code> method is where the game logic occurs. It checks for collisions between the ball and the paddle, as well as between the ball and the bricks. When a brick is hit, it's removed from the <code>map</code>, the score is incremented, and the ball's direction is updated.</p>
+                <pre class="bg-gray-100 p-4 rounded-lg overflow-auto">
+<code>
+@Override
+public void actionPerformed(ActionEvent e) {
+    timer.start();
+
+    if (play) {
+        // Ball and paddle collision
+        if (new Rectangle2D.Float(ballPosX, ballPosY, 20, 20).intersects(new Rectangle2D.Float(playerX, 550, 100, 8))) {
+            ballDirY = -ballDirY;
+        }
+
+        // Check map collision with the ball
+        A: for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                if (map[i][j] > 0) {
+                    int brickX = j * brickWidth + 80;
+                    int brickY = i * brickHeight + 50;
+
+                    Rectangle2D rect = new Rectangle2D.Float(brickX, brickY, brickWidth, brickHeight);
+                    Rectangle2D ballRect = new Rectangle2D.Float(ballPosX, ballPosY, 20, 20);
+
+                    if (ballRect.intersects(rect)) {
+                        map[i][j] = 0;
+                        totalBricks--;
+                        score += 5;
+
+                        if (ballPosX + 19 <= rect.getX() || ballPosX + 1 >= rect.getX() + rect.getWidth()) {
+                            ballDirX = -ballDirX;
+                        } else {
+                            ballDirY = -ballDirY;
+                        }
+
+                        break A;
+                    }
+                }
+            }
+        }
+
+        // Ball movement and boundaries
+        ballPosX += ballDirX;
+        ballPosY += ballDirY;
+
+        if (ballPosX < 0) {
+            ballDirX = -ballDirX;
+        }
+        if (ballPosY < 0) {
+            ballDirY = -ballDirY;
+        }
+        if (ballPosX > 670) {
+            ballDirX = -ballDirX;
+        }
+
+        repaint();
+    }
+}
+</code>
+                </pre>
+
+                <h3 class="text-xl font-bold text-blue-500 mt-8 mb-2">5. Conclusion</h3>
+                <p>This Brick Breaker game showcases fundamental concepts in game development, such as rendering graphics, handling user input, and implementing game mechanics. By understanding and modifying this code, you can create your own variations of this classic game or use these techniques in other projects.</p>
+            </section>
+        </article>
+    </main>
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="#" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook" class="inline w-6 h-6"></a>
+                <a href="https://www.instagram.com/sparsh.comm/" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" class="inline w-6 h-6"></a>
+                <a href="https://x.com/sparshshar78043" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter" class="inline w-6 h-6"></a>
+                <a href="https://www.linkedin.com/in/sparsh-sharma-2805bb291/" class="mx-2"><img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn" class="inline w-6 h-6"></a>          
+            </div>
+            <p>&copy; 2024, All rights reserved.</p>
+        </div>
+      </footer>
+</body>
+</html>
