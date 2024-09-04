@@ -38,10 +38,10 @@ Here are some of the images that are included in this repository:
   ![Profile Picture](Pictures/Home-1.png)
 
 - **Project Showcase**:  
-  ![Project Showcase](Pictures/project-work-1.png)
+  ![Project Showcase](Pictures/work-1.png)
 
 - **Work Environment**:  
-  ![Work Environment](Pictures/work-blog-1.png)
+  ![Work Environment](Pictures/blog-1.png)
 
 These images are used to visually represent my work and projects in the portfolio.
 
