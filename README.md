@@ -1,12 +1,13 @@
 # My Portfolio
 
-Welcome to my personal portfolio repository! This project showcases my work, skills, and experiences as a Computer Applications student and aspiring software developer. Below, you'll find a brief overview of the sections included in the portfolio and instructions on how to run the project locally.
+Welcome to my personal portfolio repository! This project showcases my work, skills, and experiences as a Computer Applications student and aspiring software developer. Below, you'll find a brief overview of the sections included in the portfolio, references to images, and instructions on how to run the project locally.
 
 ## Table of Contents
 
 - [About Me](#about-me)
 - [Skills](#skills)
 - [Projects](#projects)
+- [Images](#images)
 - [Contact](#contact)
 - [How to Run](#how-to-run)
 
@@ -28,6 +29,21 @@ A platform designed to inspire creativity and innovation by providing a wide ran
 
 ### [Brick Breaker Game](https://github.com/Mrshelby0/Brick-Breaker-Game) *(In Progress)*
 An implementation of the classic Brick Breaker game as a fun project and a potential first-year minor project.
+
+## Images
+
+Here are some of the images that are included in this repository:
+
+- **Profile Picture**:  
+  ![Profile Picture](Pictures/profile.jpg)
+
+- **Project Showcase**:  
+  ![Project Showcase](Pictures/project-showcase.jpg)
+
+- **Work Environment**:  
+  ![Work Environment](Pictures/work-environment.jpg)
+
+These images are used to visually represent my work and projects in the portfolio.
 
 ## Contact
 
