@@ -43,7 +43,7 @@ Here are some of the images that are included in this repository:
 - **Work Environment**:  
   ![Work Environment](Pictures/blog-1.png)
   
--**About Me**:
+- **About Me**:
   ![About Me](Pictures/about-1.png)
 
 These images are used to visually represent my work and projects in the portfolio.
