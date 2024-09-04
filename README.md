@@ -35,13 +35,13 @@ An implementation of the classic Brick Breaker game as a fun project and a poten
 Here are some of the images that are included in this repository:
 
 - **Profile Picture**:  
-  ![Profile Picture](Pictures/profile.jpg)
+  ![Profile Picture](Pictures/Home-1.png)
 
 - **Project Showcase**:  
-  ![Project Showcase](Pictures/project-showcase.jpg)
+  ![Project Showcase](Pictures/project-work-1.png)
 
 - **Work Environment**:  
-  ![Work Environment](Pictures/work-environment.jpg)
+  ![Work Environment](Pictures/work-blog-1.png)
 
 These images are used to visually represent my work and projects in the portfolio.
 
