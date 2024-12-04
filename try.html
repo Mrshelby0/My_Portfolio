@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparsh's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Floating animation for hero elements */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Glowing hover effect */
+        .glow-effect:hover {
+            box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* Gradient background for body */
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Typing animation */
+        .typewriter span {
+            display: inline-block;
+            border-right: 2px solid #00ffcc;
+            animation: typing 3s steps(20, end), blink 0.5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="bg-gray-900 py-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-3xl font-extrabold text-teal-400">Sparsh</h1>
+            <nav>
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="hover:text-teal-300">Home</a></li>
+                    <li><a href="#projects" class="hover:text-teal-300">Projects</a></li>
+                    <li><a href="#about" class="hover:text-teal-300">About</a></li>
+                    <li><a href="#contact" class="hover:text-teal-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-20 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-5xl font-bold mb-4">
+                Hi, I'm <span class="typewriter"><span>Sparsh Sharma</span></span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-6">Crafting Elegant Solutions with Code</p>
+            <a href="sparsh-resume.pdf" class="bg-teal-500 text-white px-6 py-3 rounded-lg glow-effect">Download Resume</a>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-semibold text-center text-teal-400 mb-8">Projects</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Card -->
+                <div class="bg-gray-700 p-6 rounded-lg glow-effect hover:scale-105 transform transition">
+                    <h4 class="text-xl font-bold mb-2 text-teal-400">Project Idea Hub</h4>
+                    <p class="text-gray-300 mb-4">A platform for sharing innovative project ideas.</p>
+                    <a href="https://github.com/Mrshelby0" class="text-teal-500 hover:underline">GitHub</a>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg glow-effect hover:scale-105 transform transition">
+                    <h4 class="text-xl font-bold mb-2 text-teal-400">Loan Automation System</h4>
+                    <p class="text-gray-300 mb-4">Streamlined loan application processing.</p>
+                    <a href="https://github.com/Mrshelby0" class="text-teal-500 hover:underline">GitHub</a>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg glow-effect hover:scale-105 transform transition">
+                    <h4 class="text-xl font-bold mb-2 text-teal-400">Portfolio Website</h4>
+                    <p class="text-gray-300 mb-4">Showcasing my journey as a developer.</p>
+                    <a href="https://github.com/Mrshelby0" class="text-teal-500 hover:underline">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-semibold text-teal-400 mb-8">About Me</h3>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                Passionate developer with experience in creating dynamic and responsive websites.
+                Proficient in modern web technologies including React, TailwindCSS, and Django.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 py-8">
+        <div class="container mx-auto text-center">
+            <h4 class="text-xl text-teal-400">Contact Me</h4>
+            <p class="text-gray-400">Email: sparshsharma@example.com</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="https://github.com/Mrshelby0" class="text-teal-400 hover:text-teal-600">
+                    <img src="https://img.icons8.com/ios-filled/30/teal/github.png" alt="GitHub" />
+                </a>
+                <a href="https://linkedin.com/in/sparshsharma" class="text-teal-400 hover:text-teal-600">
+                    <img src="https://img.icons8.com/ios-filled/30/teal/linkedin.png" alt="LinkedIn" />
+                </a>
+                <a href="https://instagram.com/sparsh.comm" class="text-teal-400 hover:text-teal-600">
+                    <img src="https://img.icons8.com/ios-filled/30/teal/instagram.png" alt="Instagram" />
+                </a>
+            </div>
+            <p class="text-gray-500 mt-6">&copy; 2024 Sparsh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
